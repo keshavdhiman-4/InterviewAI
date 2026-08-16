@@ -1,0 +1,11 @@
+# Environment variables (Crucial for hiding API keys and DB URIs!)
+.env
+
+# Dependencies (Too massive to upload)
+node_modules/
+
+# Logs
+*.log
+
+# Temporary demo data
+temp.js
