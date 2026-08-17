@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate } from 'react-router'
-import { logoutUser } from "../../auth/services/auth.api";
+import { logoutUser } from "../../auth/services/auth.api.js";
 
 const Home = () => {
 
