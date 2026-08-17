@@ -97,15 +97,9 @@ Job Description: ${jobDescription}`;
 
 
 async function generatePdfFromHtml(htmlContent) {
-    const browser = await puppeteer.launch({
-        headless: true, // or "new" depending on your Puppeteer version
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-            '--disable-gpu'
-        ]
-    });
+    const browser = await puppeteer.connect({
+    browserWSEndpoint: `wss://chrome.browserless.io?token=2V5Ta2THW8pRlWx4fb56596acf5bbc51e9277dc3411c59920`
+});
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" })
 
