@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react'
 import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate } from 'react-router'
-import { logout } from "../../auth/services/auth.api.js";
 
 const Home = () => {
 
@@ -18,16 +17,6 @@ const Home = () => {
         const data = await generateReport({ jobDescription, selfDescription, resumeFile })
         navigate(`/interview/${data._id}`)
     }
-
-    const handleLogout = async () => {
-        try {
-            await logout();
-            // Clear any local React state if needed here
-            navigate('/login');
-        } catch (error) {
-            console.error("Logout failed", error);
-        }
-    };
 
     if (loading) {
         return (
@@ -73,32 +62,11 @@ const Home = () => {
 
                     {/* Right Panel - Profile */}
                     <div className='panel panel--right'>
-                        <div 
-                            className='panel__header' 
-                            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-                        >
-                            {/* Left Side: Profile Icon & Title */}
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <span className='panel__icon'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
-                                </span>
-                                <h2 style={{ margin: 0 }}>Your Profile</h2>
-                            </div>
-
-                            {/* Right Side: Logout Button */}
-                            <button 
-                                onClick={handleLogout} 
-                                title="Log Out"
-                                style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#9ca3af', display: 'flex' }}
-                                onMouseEnter={(e) => e.currentTarget.style.color = '#ef4444'}
-                                onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                    <polyline points="16 17 21 12 16 7"></polyline>
-                                    <line x1="21" y1="12" x2="9" y2="12"></line>
-                                </svg>
-                            </button>
+                        <div className='panel__header'>
+                            <span className='panel__icon'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                            </span>
+                            <h2>Your Profile</h2>
                         </div>
 
                         {/* Upload Resume */}
