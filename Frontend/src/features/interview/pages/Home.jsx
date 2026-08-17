@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate } from 'react-router'
-import { logoutUser } from '../services/auth.api';
+import { logoutUser } from "../../auth/services/auth.api";
 
 const Home = () => {
 
@@ -141,7 +141,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                
+
                 {/* Card Footer */}
                 <div className='interview-card__footer'>
                     <span className='footer-info'>AI-Powered Strategy Generation &bull; Approx 30s</span>
