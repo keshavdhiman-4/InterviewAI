@@ -7,9 +7,12 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: "https://interview-ai-zeta-two.vercel.app",
+    origin: [
+        "https://interview-ai-zeta-two.vercel.app", 
+        "https://interview-91lufxpto-keshavdhiman-4s-projects.vercel.app"
+    ],
     credentials: true
-}))
+}));
 
 /* require all the routes here */
 const authRouter = require("./routes/auth.routes")
