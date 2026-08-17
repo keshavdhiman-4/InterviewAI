@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate } from 'react-router'
-import { logoutUser } from "../../auth/services/auth.api.js";
+import { logout } from "../../auth/services/auth.api.js";
 
 const Home = () => {
 
@@ -21,7 +21,7 @@ const Home = () => {
 
     const handleLogout = async () => {
         try {
-            await logoutUser();
+            await logout();
             // Clear any local React state if needed here
             navigate('/login');
         } catch (error) {
