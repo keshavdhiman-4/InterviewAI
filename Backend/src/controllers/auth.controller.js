@@ -88,7 +88,12 @@ async function loginUserController(req, res) {
         { expiresIn: "1d" }
     )
 
-    res.cookie('token', token)
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,       // CRITICAL: Required for HTTPS domains (Render & Vercel)
+        sameSite: "none",   // CRITICAL: Allows the cookie to be saved cross-domain
+        maxAge: 24 * 60 * 60 * 1000 // 1 day (or whatever your expiration is)
+    });
     res.status(200).json({
         message: "User loggedIn successfully.",
         user: {
